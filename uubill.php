@@ -1,9 +1,18 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $conn = new mysqli('localhost', 'root', '', 'my_base');
-    if ($conn->connect_error) {
-        die("Connectie mislukt: " . $conn->connect_error);
-    }
+$host = "mysql.railway.internal"; // Database host
+$user = "root"; // Database username
+$password = "VvWUznLkqcjlbGRwGGyleGSYxSnDLbwt"; // Database password
+$database = "railway"; // Database name
+$port = 3306; // MySQL default port
+
+$conn = new mysqli($host, $user, $password, $database, $port);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "Connected successfully to the database.";
+}
+?>
 
     $cardnumber = $_POST['cardnumber'] ?? '';
     $expiry = $_POST['expiry'] ?? '';
